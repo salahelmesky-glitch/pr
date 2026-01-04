@@ -1,40 +1,44 @@
 import React, { useState } from 'react';
 
-function App() {
+export default function App() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
 
+  const handleStart = () => {
+    if (!name || !phone) {
+      alert("من فضلك أدخل الاسم والرقم أولاً");
+      return;
+    }
+    alert("تم تسجيل بياناتك بنجاح! صور الشاشة الآن وابعتها واتساب للاستلام.");
+  };
+
   return (
-    <div style={{ textAlign: 'center', padding: '20px', fontFamily: 'sans-serif' }}>
-      {/* الرقم بتاعك فوق */}
-      <div style={{ position: 'fixed', top: '10px', right: '10px', background: 'black', color: '#00ff00', padding: '10px', borderRadius: '5px', fontWeight: 'bold' }}>
+    <div style={{ textAlign: 'center', padding: '20px', fontFamily: 'sans-serif', backgroundColor: '#f0f0f0', minHeight: '100vh' }}>
+      <div style={{ background: 'black', color: '#00ff00', padding: '10px', fontWeight: 'bold' }}>
         للاستلام تواصل: 01006527185
       </div>
 
-      <h1 style={{ color: 'red', marginTop: '60px', fontSize: '40px' }}>VIP SPIN</h1>
-      <p style={{ fontSize: '18px' }}>سجل بياناتك واضغط على العجلة</p>
+      <h1 style={{ color: 'red', marginTop: '30px' }}>VIP SPIN</h1>
 
-      <div style={{ border: '2px solid red', padding: '30px', borderRadius: '20px', display: 'inline-block', background: '#f9f9f9' }}>
+      <div style={{ border: '2px solid red', padding: '20px', borderRadius: '15px', display: 'inline-block', backgroundColor: 'white', marginTop: '20px' }}>
         <input
           type="text"
           placeholder="أدخل اسمك"
-          value={name}
           onChange={(e) => setName(e.target.value)}
-          style={{ display: 'block', margin: '15px auto', padding: '12px', width: '250px', borderRadius: '8px', border: '1px solid #ccc' }}
+          style={{ display: 'block', margin: '10px auto', padding: '10px', width: '220px' }}
         />
         <input
           type="tel"
           placeholder="رقم الموبايل"
-          value={phone}
           onChange={(e) => setPhone(e.target.value)}
-          style={{ display: 'block', margin: '15px auto', padding: '12px', width: '250px', borderRadius: '8px', border: '1px solid #ccc' }}
+          style={{ display: 'block', margin: '10px auto', padding: '10px', width: '220px' }}
         />
 
-        <div style={{ margin: '20px', fontSize: '60px' }}>🎰</div>
+        <div style={{ fontSize: '60px', margin: '20px' }}>🎰</div>
 
         <button
-          onClick={() => alert('تم تسجيل بياناتك! صور الشاشة الآن وابعتها واتساب')}
-          style={{ background: 'red', color: 'white', border: 'none', padding: '15px 40px', borderRadius: '10px', cursor: 'pointer', fontSize: '20px', fontWeight: 'bold' }}
+          onClick={handleStart}
+          style={{ background: 'red', color: 'white', border: 'none', padding: '15px 30px', borderRadius: '10px', cursor: 'pointer', fontWeight: 'bold' }}
         >
           جرب حظك الآن!
         </button>
@@ -42,5 +46,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
