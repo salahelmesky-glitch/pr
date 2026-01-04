@@ -3,13 +3,16 @@ import React, { useState } from 'react';
 export default function App() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [resultNum, setResultNum] = useState(null);
 
   const handleStart = () => {
     if (!name || !phone) {
       alert("من فضلك أدخل الاسم والرقم أولاً");
       return;
     }
-    alert("تم تسجيل بياناتك بنجاح! صور الشاشة الآن وابعتها واتساب للاستلام.");
+    const randomNo = Math.floor(Math.random() * 900) + 100;
+    setResultNum(randomNo);
+    alert(`رقمك هو: ${randomNo}`);
   };
 
   return (
@@ -22,19 +25,19 @@ export default function App() {
 
       <div style={{ border: '2px solid red', padding: '20px', borderRadius: '15px', display: 'inline-block', backgroundColor: 'white', marginTop: '20px' }}>
         <input
-          type="text"
-          placeholder="أدخل اسمك"
+          type="text" placeholder="أدخل اسمك"
           onChange={(e) => setName(e.target.value)}
           style={{ display: 'block', margin: '10px auto', padding: '10px', width: '220px' }}
         />
         <input
-          type="tel"
-          placeholder="رقم الموبايل"
+          type="tel" placeholder="رقم الموبايل"
           onChange={(e) => setPhone(e.target.value)}
           style={{ display: 'block', margin: '10px auto', padding: '10px', width: '220px' }}
         />
 
-        <div style={{ fontSize: '60px', margin: '20px' }}>🎰</div>
+        <div style={{ fontSize: '50px', margin: '20px', color: 'blue', fontWeight: 'bold' }}>
+          {resultNum ? resultNum : "🎰"}
+        </div>
 
         <button
           onClick={handleStart}
@@ -42,6 +45,12 @@ export default function App() {
         >
           جرب حظك الآن!
         </button>
+
+        {/* الجمل اللي طلبتها تحت الرقم والزرار */}
+        <div style={{ marginTop: '25px', borderTop: '1px solid #eee', paddingTop: '15px' }}>
+          <h3 style={{ margin: '5px 0', color: '#333' }}>Welcome to T-shirt Brand</h3>
+          <p style={{ color: 'green', fontWeight: 'bold', fontSize: '18px' }}>ابعت الصورة على الواتس للاستلام</p>
+        </div>
       </div>
     </div>
   );
